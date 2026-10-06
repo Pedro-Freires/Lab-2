@@ -1,7 +1,6 @@
-package Lab2;
+package lab2;
 
 public class RegistroTempoOnline {
-
     private String nomeDisciplina;
     private int tempoOnline;
     private int tempoOnlineEsperado;
@@ -31,4 +30,3 @@ public class RegistroTempoOnline {
         return nomeDisciplina + " " + tempoOnline + "/" + tempoOnlineEsperado;
     }
 }
-

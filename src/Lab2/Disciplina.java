@@ -1,7 +1,6 @@
-package Lab2;
+package lab2;
 
 public class Disciplina {
-
     private String nomeDisciplina;
     private int horasEstudo;
     private double nota1;
@@ -39,6 +38,7 @@ public class Disciplina {
         return media >= 7.0;
     }
 
+    // Declarar as 4 notas parece não ser necessário. Talvez um array seria uma fo
     @Override
     public String toString() {
         double media = (nota1 + nota2 + nota3 + nota4) / 4;
@@ -47,4 +47,3 @@ public class Disciplina {
                 + " [" + nota1 + ", " + nota2 + ", " + nota3 + ", " + nota4 + "]";
     }
 }
-
