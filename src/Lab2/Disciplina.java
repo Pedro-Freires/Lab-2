@@ -39,6 +39,7 @@ public class Disciplina {
         return media >= 7.0;
     }
 
+    // Declarar as 4 notas parece não ser necessário. Talvez um array seria uma fo
     @Override
     public String toString() {
         double media = (nota1 + nota2 + nota3 + nota4) / 4;

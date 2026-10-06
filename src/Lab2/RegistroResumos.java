@@ -12,6 +12,7 @@ public class RegistroResumos {
         this.quantidadeResumos = 0;
     }
 
+    //adicionaResumo pode ser melhorado.
     public void adicionaResumo(String tema, String conteudo) {
         String resumo = tema + ": " + conteudo;
 
@@ -51,8 +52,13 @@ public class RegistroResumos {
         return resultado;
     }
 
+    /*
+    Método incomplmeto
+     */
     public int contaResumos() {
         return quantidadeResumos;
     }
+
+    //Não existe o método temResumo();
 }
 
