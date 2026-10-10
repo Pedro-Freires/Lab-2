@@ -1,10 +1,5 @@
 package lab2;
 
-import Lab2.Descanso;
-import Lab2.Disciplina;
-import Lab2.RegistroResumos;
-import Lab2.RegistroTempoOnline;
-
 public class Coisa {
     public static void main(String[] args) {
         registrarDescanso();
