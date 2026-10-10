@@ -1,18 +1,27 @@
-
 package lab2;
 
 /**
- * Representa um resumo de estudo com um tema e seu conteúdo.
+ * Representa um resumo de estudo, composto por um tema e seu conteúdo.
+ *
+ * @author Pedro José
  */
 public class Resumo {
+
+    /**
+     * Tema do resumo.
+     */
     private String tema;
+
+    /**
+     * Conteúdo textual do resumo.
+     */
     private String conteudo;
 
     /**
      * Cria um resumo com o tema e o conteúdo informados.
      *
      * @param tema tema do resumo
-     * @param conteudo texto do resumo
+     * @param conteudo conteúdo do resumo
      */
     public Resumo(String tema, String conteudo) {
         this.tema = tema;
@@ -22,7 +31,7 @@ public class Resumo {
     /**
      * Retorna o tema do resumo.
      *
-     * @return tema cadastrado
+     * @return tema do resumo
      */
     public String getTema() {
         return tema;
@@ -31,16 +40,16 @@ public class Resumo {
     /**
      * Retorna o conteúdo do resumo.
      *
-     * @return conteúdo cadastrado
+     * @return conteúdo do resumo
      */
     public String getConteudo() {
         return conteudo;
     }
 
     /**
-     * Retorna o tema seguido do conteúdo.
+     * Retorna o tema seguido do conteúdo do resumo.
      *
-     * @return resumo formatado
+     * @return representação textual no formato "tema: conteúdo"
      */
     @Override
     public String toString() {

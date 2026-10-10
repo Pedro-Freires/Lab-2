@@ -1,14 +1,29 @@
-
 package lab2;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 /**
  * Armazena os resumos de estudo e permite consultar seus temas e conteúdos.
+ * Também permite buscar palavras nos conteúdos dos resumos.
+ *
+ * @author Pedro José
  */
 public class RegistroResumos {
+
+    /**
+     * Vetor que armazena os resumos cadastrados.
+     */
     private Resumo[] resumos;
+
+    /**
+     * Quantidade atual de resumos cadastrados.
+     */
     private int quantidadeResumos;
+
+    /**
+     * Índice da próxima posição em que um resumo será armazenado.
+     */
     private int proximoResumo;
 
     /**
@@ -53,7 +68,7 @@ public class RegistroResumos {
     }
 
     /**
-     * Adiciona um resumo usando o nome alternativo do método.
+     * Adiciona um resumo utilizando o nome alternativo do método.
      *
      * @param tema tema do resumo
      * @param conteudo conteúdo do resumo
@@ -65,7 +80,7 @@ public class RegistroResumos {
     /**
      * Retorna os resumos cadastrados na ordem de registro.
      *
-     * @return vetor com os resumos formatados
+     * @return vetor com os resumos formatados como texto
      */
     public String[] pegaResumos() {
         String[] resultado = new String[quantidadeResumos];
@@ -87,7 +102,7 @@ public class RegistroResumos {
     /**
      * Informa quantos resumos estão cadastrados.
      *
-     * @return quantidade de resumos
+     * @return quantidade de resumos cadastrados
      */
     public int conta() {
         return quantidadeResumos;
@@ -96,16 +111,16 @@ public class RegistroResumos {
     /**
      * Retorna a quantidade de resumos cadastrados.
      *
-     * @return número de resumos
+     * @return número de resumos cadastrados
      */
     public int contaResumos() {
         return quantidadeResumos;
     }
 
     /**
-     * Retorna a quantidade de resumos e seus temas.
+     * Retorna a quantidade de resumos cadastrados e seus respectivos temas.
      *
-     * @return texto com a quantidade e os temas cadastrados
+     * @return texto contendo a quantidade e os temas dos resumos
      */
     public String imprimeResumos() {
         String resultado = "- " + quantidadeResumos
@@ -116,6 +131,7 @@ public class RegistroResumos {
         for (int i = 0; i < quantidadeResumos; i++) {
             int indice = (proximoResumo - quantidadeResumos
                     + resumos.length + i) % resumos.length;
+
             temas[i] = resumos[indice].getTema();
         }
 
@@ -127,7 +143,7 @@ public class RegistroResumos {
      * Verifica se existe um resumo com o tema informado.
      *
      * @param tema tema que será procurado
-     * @return true se o tema estiver cadastrado, false caso contrário
+     * @return true se o tema estiver cadastrado; false caso contrário
      */
     public boolean temResumo(String tema) {
         for (int i = 0; i < quantidadeResumos; i++) {
@@ -143,14 +159,15 @@ public class RegistroResumos {
     }
 
     /**
-     * Procura uma palavra no conteúdo dos resumos, sem diferenciar
-     * letras maiúsculas de minúsculas.
+     * Procura uma palavra ou trecho no conteúdo dos resumos,
+     * sem diferenciar letras maiúsculas de minúsculas.
+     * Os temas encontrados são retornados em ordem alfabética.
      *
      * @param chaveDeBusca palavra ou trecho procurado
-     * @return temas encontrados em ordem alfabética
+     * @return vetor com os temas dos resumos encontrados
      */
     public String[] busca(String chaveDeBusca) {
-        String chave = chaveDeBusca.toLowerCase();
+        String chave = chaveDeBusca.toLowerCase(Locale.ROOT);
         String[] encontrados = new String[quantidadeResumos];
         int quantidadeEncontrada = 0;
 
@@ -160,7 +177,8 @@ public class RegistroResumos {
 
             Resumo resumo = resumos[indice];
 
-            if (resumo.getConteudo().toLowerCase().contains(chave)) {
+            if (resumo.getConteudo().toLowerCase(Locale.ROOT)
+                    .contains(chave)) {
                 encontrados[quantidadeEncontrada] = resumo.getTema();
                 quantidadeEncontrada++;
             }

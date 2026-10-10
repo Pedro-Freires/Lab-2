@@ -1,15 +1,34 @@
-
 package lab2;
 
 import java.util.Arrays;
 
 /**
- * Registra as horas de estudo e as notas de uma disciplina.
+ * Representa uma disciplina com horas de estudo, notas e pesos.
+ * Permite cadastrar notas, calcular a média ponderada e verificar
+ * se o aluno foi aprovado.
+ *
+ * @author Pedro José
  */
 public class Disciplina {
+
+    /**
+     * Nome da disciplina.
+     */
     private String nomeDisciplina;
+
+    /**
+     * Quantidade total de horas de estudo da disciplina.
+     */
     private int horasEstudo;
+
+    /**
+     * Notas cadastradas na disciplina.
+     */
     private double[] notas;
+
+    /**
+     * Pesos correspondentes a cada nota.
+     */
     private int[] pesos;
 
     /**
@@ -23,7 +42,7 @@ public class Disciplina {
 
     /**
      * Cria uma disciplina com a quantidade de notas informada,
-     * considerando todas com o mesmo peso.
+     * considerando todas as notas com o mesmo peso.
      *
      * @param nomeDisciplina nome da disciplina
      * @param numeroNotas quantidade de notas
@@ -40,11 +59,14 @@ public class Disciplina {
     }
 
     /**
-     * Cria uma disciplina com a quantidade de notas e seus pesos.
+     * Cria uma disciplina com a quantidade de notas e seus respectivos pesos.
+     * Se o vetor de pesos for nulo, todas as notas terão o mesmo peso.
      *
      * @param nomeDisciplina nome da disciplina
      * @param numeroNotas quantidade de notas
-     * @param pesos pesos utilizados no cálculo da média
+     * @param pesos vetor com os pesos das notas
+     * @throws IllegalArgumentException se a quantidade de pesos for diferente
+     * da quantidade de notas
      */
     public Disciplina(String nomeDisciplina, int numeroNotas, int[] pesos) {
         this.nomeDisciplina = nomeDisciplina;
@@ -78,8 +100,9 @@ public class Disciplina {
 
     /**
      * Cadastra ou substitui uma nota da disciplina.
+     * As posições das notas começam em 1.
      *
-     * @param nota posição da nota, começando em 1
+     * @param nota posição da nota
      * @param valorNota valor da nota
      */
     public void cadastraNota(int nota, double valorNota) {
@@ -91,14 +114,14 @@ public class Disciplina {
     /**
      * Verifica se a média da disciplina é igual ou superior a 7.
      *
-     * @return true se a média for suficiente, false caso contrário
+     * @return true se o aluno foi aprovado; false caso contrário
      */
     public boolean aprovado() {
         return calcularMedia() >= 7.0;
     }
 
     /**
-     * Calcula a média das notas usando os pesos cadastrados.
+     * Calcula a média ponderada das notas cadastradas.
      *
      * @return média ponderada das notas
      */
@@ -119,9 +142,9 @@ public class Disciplina {
     }
 
     /**
-     * Retorna o nome, as horas de estudo, a média e as notas.
+     * Retorna o nome, as horas de estudo, a média e as notas da disciplina.
      *
-     * @return dados da disciplina em formato de texto
+     * @return representação textual da disciplina
      */
     @Override
     public String toString() {
