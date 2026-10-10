@@ -1,10 +1,10 @@
-
 package lab2;
 
 /**
  * Controla as horas de descanso do aluno.
  */
 public class Descanso {
+
     private int horasDescanso;
     private int numeroSemanas;
 
@@ -29,12 +29,13 @@ public class Descanso {
     /**
      * Informa se o aluno está descansado ou cansado.
      *
-     * @return status do aluno
+     * @return status geral do aluno
      */
     public String getStatusGeral() {
-        if (numeroSemanas > 0 && horasDescanso >= 26) {
+        if (numeroSemanas > 0 && horasDescanso >= 26 * numeroSemanas) {
             return "descansado";
         }
+
         return "cansado";
     }
 }
