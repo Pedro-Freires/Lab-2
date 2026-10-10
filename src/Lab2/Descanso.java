@@ -1,20 +1,19 @@
 package lab2;
 
 /**
- * Controla as horas de descanso do aluno e informa seu estado geral
- * de acordo com a quantidade de horas descansadas por semana.
+ * Controla as horas de descanso do aluno e informa seu estado geral.
  *
  * @author Pedro José
  */
 public class Descanso {
 
     /**
-     * Quantidade de horas de descanso registradas.
+     * Quantidade de horas de descanso.
      */
     private int horasDescanso;
 
     /**
-     * Número de semanas considerado no registro de descanso.
+     * Quantidade de semanas consideradas.
      */
     private int numeroSemanas;
 
@@ -28,7 +27,7 @@ public class Descanso {
     }
 
     /**
-     * Define o número de semanas considerado no registro.
+     * Define a quantidade de semanas consideradas.
      *
      * @param valor quantidade de semanas
      */
@@ -37,11 +36,10 @@ public class Descanso {
     }
 
     /**
-     * Informa o estado geral de descanso do aluno.
-     * O aluno é considerado descansado quando possui pelo menos
-     * 26 horas de descanso por semana e o número de semanas é positivo.
+     * Verifica se o aluno descansou pelo menos 26 horas por semana.
      *
-     * @return "descansado" se atingir o mínimo exigido; "cansado" caso contrário
+     * @return "descansado" se atingiu a quantidade necessária;
+     * "cansado" caso contrário
      */
     public String getStatusGeral() {
         if (numeroSemanas > 0 && horasDescanso >= 26 * numeroSemanas) {
