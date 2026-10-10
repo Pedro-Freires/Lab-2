@@ -1,95 +1,58 @@
-package lab2;
+package Lab2;
 
 public class RegistroResumos {
+
     private String[] resumos;
-    private int quantidadeResumos;
     private int proximoResumo;
+    private int quantidadeResumos;
 
     public RegistroResumos(int numeroDeResumos) {
         this.resumos = new String[numeroDeResumos];
-        this.quantidadeResumos = 0;
         this.proximoResumo = 0;
+        this.quantidadeResumos = 0;
     }
 
-    public void adiciona(String tema, String conteudo) {
-        if (resumos.length == 0) {
-            return;
-        }
+    public void adicionaResumo(String tema, String conteudo) {
+        String resumo = tema + ": " + conteudo;
 
-        String novoResumo = tema + ": " + conteudo;
-
-        for (int i = 0; i < quantidadeResumos; i++) {
-            int indice = (proximoResumo - quantidadeResumos
-                    + resumos.length + i) % resumos.length;
-
-            if (resumos[indice].startsWith(tema + ": ")) {
-                resumos[indice] = novoResumo;
+        for (int i = 0; i < resumos.length; i++) {
+            if (resumos[i] != null && resumos[i].startsWith(tema + ": ")) {
+                resumos[i] = resumo;
                 return;
             }
         }
 
-        resumos[proximoResumo] = novoResumo;
-        proximoResumo = (proximoResumo + 1) % resumos.length;
+        resumos[proximoResumo] = resumo;
 
         if (quantidadeResumos < resumos.length) {
             quantidadeResumos++;
         }
-    }
 
-    public void adicionaResumo(String tema, String conteudo) {
-        adiciona(tema, conteudo);
+        proximoResumo++;
+
+        if (proximoResumo == resumos.length) {
+            proximoResumo = 0;
+        }
     }
 
     public String[] pegaResumos() {
-        String[] resultado = new String[quantidadeResumos];
+        return resumos;
+    }
 
-        for (int i = 0; i < quantidadeResumos; i++) {
-            int indice = (proximoResumo - quantidadeResumos
-                    + resumos.length + i) % resumos.length;
+    public String imprimeResumos() {
+        String resultado = "";
 
-            resultado[i] = resumos[indice];
+        for (int i = 0; i < resumos.length; i++) {
+            if (resumos[i] != null) {
+                resultado += resumos[i] + " | ";
+            }
         }
 
         return resultado;
-    }
-
-    public int conta() {
-        return quantidadeResumos;
     }
 
     public int contaResumos() {
         return quantidadeResumos;
     }
-
-    public String imprimeResumos() {
-        String resultado = "- " + quantidadeResumos
-                + " resumo(s) cadastrado(s)\n";
-
-        resultado += "- ";
-
-        String[] atuais = pegaResumos();
-
-        for (int i = 0; i < atuais.length; i++) {
-            if (i > 0) {
-                resultado += " | ";
-            }
-
-            String resumo = atuais[i];
-            String tema = resumo.substring(0, resumo.indexOf(": "));
-
-            resultado += tema;
-        }
-
-        return resultado;
-    }
-
-    public boolean temResumo(String tema) {
-        for (String resumo : pegaResumos()) {
-            if (resumo.startsWith(tema + ": ")) {
-                return true;
-            }
-        }
-
-        return false;
-    }
 }
+
